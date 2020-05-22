@@ -19,7 +19,6 @@ class BATTLETANK_API ATank : public APawn
 
 public:
 
-	void AimAt(FVector HitLocation);
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
 
@@ -29,6 +28,11 @@ public:
 
 		void SetTurretReference(UTankTurret* TurretToSet);
 
+	void AimAt(FVector HitLocation);
+
+	UFUNCTION(BlueprintCallable)
+
+		void Fire();
 
 protected:
 
@@ -46,4 +50,6 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float LaunchSpeed = 100000; //TODO find Sensible default
+
+
 };

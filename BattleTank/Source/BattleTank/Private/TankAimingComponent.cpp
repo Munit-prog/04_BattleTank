@@ -4,7 +4,7 @@
 #include "..\Public\TankBarrel.h"
 #include "..\Public\TankTurret.h"
 #include "Kismet/GameplayStatics.h"
-#include "GameFramework/Actor.h"
+
 #include "..\Public\TankAimingComponent.h"
 
 // Sets default values for this component's properties
@@ -46,22 +46,18 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		0,
 		0,
 		ESuggestProjVelocityTraceOption::DoNotTrace//parameters must be present to prevent the bug
-	//TODO report bug
+
 	);
 
 	//Calculate the OutLaunchVelocity
 	if (bHaveAimSolution)
 	{
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
-		auto TankName = GetOwner()->GetName();
 		MoveBarrelTurretTowards(AimDirection);
-		auto Time = GetWorld()->GetTimeSeconds();
-		UE_LOG(LogTemp, Warning, TEXT("%f: Aim solution found"), Time);
 	}
 	else
 	{
-		auto Time = GetWorld()->GetTimeSeconds();
-		UE_LOG(LogTemp, Warning, TEXT("%f: No aim solve found"), Time);
+	//No aim solution found
 	}
 }
 
