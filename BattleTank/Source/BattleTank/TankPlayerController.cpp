@@ -42,7 +42,7 @@ void ATankPlayerController::AimTowardsCrosshair()
     if (GetSightRayHitLocation(HitLocation)) //Has "side-effect", is going to line trace
     {
         GetControlledTank()->AimAt(HitLocation);
-          //TODO Tell controlled tank to aim at this point
+    
     }
 }
 
